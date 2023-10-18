@@ -5,6 +5,18 @@
   display: flex;
   flex-direction: column;
 }
+.ltrListContain {
+  display: flex;
+  flex-direction: row;
+}
+.listLtr {
+  list-style: none;
+  border-bottom: 1px solid black;
+  flex: 1;
+  margin: 1em;
+  padding: 1em;
+  font-size: 24px;
+}
 .gameBoardContain {
   flex: 5;
   display: flex;

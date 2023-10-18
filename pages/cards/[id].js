@@ -25,7 +25,7 @@ export default function Card({ cardData }) {
         correctArr[i] = ans[i];
       }
       if (!correctArr[i]) {
-        correctArr[i] = '_ ';
+        correctArr[i] = ' ';
       }
     }
     return correctArr;
@@ -59,9 +59,31 @@ export default function Card({ cardData }) {
         <div className={styles.gameContain}>
           <div className={styles.formContain}>
             <div className={styles.gameBoardContain}>
-              <div className={styles.gameBoard}>{checkerArr}</div>
-              {showHint1 && <div className={styles.gameBoard}>{boardOne} </div>}
-              {showHint2 && <div className={styles.gameBoard}>{boardTwo} </div>}
+              <div className={styles.ltrListContain}>
+                {checkerArr.map(({ id, ltr }) => (
+                  <li key={id} className={styles.listLtr}>
+                    {ltr}
+                  </li>
+                ))}
+              </div>
+              {showHint1 && (
+                <div className={styles.ltrListContain}>
+                  {boardOne.map((ltr, id) => (
+                    <li className={styles.listLtr} key={id}>
+                      {ltr}
+                    </li>
+                  ))}
+                </div>
+              )}
+              {showHint2 && (
+                <div className={styles.ltrListContain}>
+                  {boardTwo.map((ltr, id) => (
+                    <li className={styles.listLtr} key={id}>
+                      {ltr}
+                    </li>
+                  ))}
+                </div>
+              )}
             </div>
             <form className={styles.formForm} onSubmit={onSubmit}>
               <label>Guess </label>
