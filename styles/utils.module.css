@@ -14,12 +14,6 @@
   margin: 1rem 0;
 }
 
-.headingLg {
-  font-size: 1.5rem;
-  line-height: 1.4;
-  margin: 1rem 0;
-}
-
 .headingMd {
   font-size: 1.2rem;
   line-height: 1.5;
@@ -53,4 +47,15 @@
 
 .headingPaper {
   font-stretch: condensed;
+  font-size: 60px;
+}
+
+.headingLg {
+  font-size: 40px;
+  line-height: 1.4;
+  margin: 1rem 0;
+}
+.descript {
+  margin-left: 50px;
+  margin-right: 50px;
 }

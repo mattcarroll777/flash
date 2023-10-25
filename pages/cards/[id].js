@@ -96,18 +96,15 @@ export default function Card({ cardData }) {
               <input type="submit" value="Submit Guess" />
             </form>
           </div>
-          <Image
-            priority
-            src={cardData.image}
-            className={utilStyles.prodImage}
-            height={400}
-            width={400}
-          />
+          <div className={styles.imgContain}>
+            <Image priority src={cardData.image} height={400} width={400} />
+          </div>
         </div>
         {/* <div dangerouslySetInnerHTML={{ __html: cardData.contentHtml }} /> */}
       </article>
-      {showHint1 && <div> {cardData.hint1} </div>}
-      {showHint2 && <div> {cardData.hint2} </div>}
+      <div>Hints: </div>
+      {showHint1 && <div>1. {cardData.hint1} </div>}
+      {showHint2 && <div>2. {cardData.hint2} </div>}
       {winState && <div> Winner Winner </div>}
     </Layout>
   );

@@ -1,32 +1,54 @@
-.gameContain {
-  display: flex;
+@media (min-width: 800px) {
+  .gameContain {
+    display: flex;
+    flex-direction: row;
+  }
+  .listLtr {
+    margin: 20px;
+    padding: 20px;
+    font-size: 24px;
+  }
 }
+
+@media (max-width: 800px) {
+  .gameContain {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .listLtr {
+    margin: 6px;
+    padding: 6px;
+    font-size: 12px;
+  }
+}
+.listLtr {
+  list-style: none;
+  border-bottom: solid 1px;
+  flex: 1;
+}
+
 .formContain {
+  flex: 3;
   display: flex;
   flex-direction: column;
+  border: solid 1px;
+  border-radius: 1%;
+}
+.imgContain {
+  flex: 2;
 }
 .ltrListContain {
   display: flex;
   flex-direction: row;
 }
-.listLtr {
-  list-style: none;
-  border-bottom: 1px solid black;
-  flex: 1;
-  margin: 1em;
-  padding: 1em;
-  font-size: 24px;
-}
+
 .gameBoardContain {
   flex: 5;
   display: flex;
   flex-direction: column;
 }
-.gameBoard {
-  flex: 1;
-  font-size: 24px;
-  letter-spacing: 1em;
-}
+
 .formForm {
   flex: 1;
+  margin: 20px;
 }
