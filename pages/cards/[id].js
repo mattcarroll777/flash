@@ -7,11 +7,10 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 
 export default function Card({ cardData }) {
-  const [showHint1, setShowHint1] = React.useState(false);
-  const [showHint2, setShowHint2] = React.useState(false);
   const [winState, setWinState] = React.useState(false);
   const [guess, setGuess] = React.useState('');
   const [checkerArr, setCheckerArr] = React.useState([]);
+  const [counter, setCounter] = React.useState(0);
 
   const [boardOne, setBoardOne] = React.useState([]);
   const [boardTwo, setBoardTwo] = React.useState([]);
@@ -37,16 +36,15 @@ export default function Card({ cardData }) {
 
   async function onSubmit(event) {
     event.preventDefault();
+    setCounter(counter + 1);
     if (answer == guess) {
       setWinState(true);
     }
-    if (answer !== guess && !showHint1) {
+    if (answer !== guess && counter == 0) {
       setBoardOne(checker(answer, guess));
-      setShowHint1(true);
     }
-    if (answer !== guess && showHint1 && !showHint2) {
+    if (answer !== guess && counter == 1) {
       setBoardTwo(checker(answer, guess));
-      setShowHint2(true);
     }
   }
 
@@ -66,7 +64,7 @@ export default function Card({ cardData }) {
                   </li>
                 ))}
               </div>
-              {showHint1 && (
+              {counter > 0 && (
                 <div className={styles.ltrListContain}>
                   {boardOne.map((ltr, id) => (
                     <li className={styles.listLtr} key={id}>
@@ -75,7 +73,7 @@ export default function Card({ cardData }) {
                   ))}
                 </div>
               )}
-              {showHint2 && (
+              {counter > 1 && (
                 <div className={styles.ltrListContain}>
                   {boardTwo.map((ltr, id) => (
                     <li className={styles.listLtr} key={id}>
@@ -100,12 +98,25 @@ export default function Card({ cardData }) {
             <Image priority src={cardData.image} height={400} width={400} />
           </div>
         </div>
-        {/* <div dangerouslySetInnerHTML={{ __html: cardData.contentHtml }} /> */}
       </article>
+      <div>
+        <h3>COUNTER: {counter}</h3>
+      </div>
       <div>Hints: </div>
-      {showHint1 && <div>1. {cardData.hint1} </div>}
-      {showHint2 && <div>2. {cardData.hint2} </div>}
-      {winState && <div> Winner Winner </div>}
+      {counter > 0 && <div>1. {cardData.hint1} </div>}
+      {counter > 1 && <div>2. {cardData.hint2} </div>}
+      {counter > 2 && !winState && (
+        <div>
+          <h4>Sorry you lose! The correct answer is: {answer}</h4>
+          <div dangerouslySetInnerHTML={{ __html: cardData.contentHtml }} />
+        </div>
+      )}
+      {winState && (
+        <div>
+          <h4> Winner Winner! {answer} was the correct answer!</h4>
+          <div dangerouslySetInnerHTML={{ __html: cardData.contentHtml }} />
+        </div>
+      )}
     </Layout>
   );
 }

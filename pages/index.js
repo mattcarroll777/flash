@@ -14,13 +14,13 @@ export default function Home({ allCardsData }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <div className={utilStyles.descript}>
           Welcome to Flashle! A flash card game with a Wordle-like twist. An
-          image will be displayed and your task is to guess who it is. If your
-          guess isn't spot-on, don't fret. The correct letters from your
+          image will be displayed and have three chances to guess who it is. If
+          your guess isn't spot-on, don't fret. The correct letters from your
           incorrect guess will be shown (e.g., "Mike" vs. "Mitch" will display
           as "M I _ _"), and you'll receive a handy hint to steer you closer to
           the correct answer.
         </div>
-        <h2 className={utilStyles.headingLg}>Card</h2>
+        <h2 className={utilStyles.headingLg}>Cards</h2>
         <ul className={utilStyles.list}>
           {allCardsData.map(({ id, date }) => (
             <li className={utilStyles.listItem} key={id}>
